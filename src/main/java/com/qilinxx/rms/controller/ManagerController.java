@@ -793,6 +793,8 @@ public class ManagerController {
         //清空或者初始化fileMap
         FileKit.textbookMap = FileKit.clearOrInitMap(FileKit.textbookMap, user.getUid());
         FileKit.deleteFile(new File(UploadUtil.getUploadFilePath() + File.separator + "upload" + File.separator + user.getUid() + File.separator + "temp//textbook"));
+        List<Category> categories = Arrays.asList(Category.values());
+        model.addAttribute("categories", categories);
         model.addAttribute("key", UUID.randomUUID().toString().replace("-", "") + "-" + user.getUid());
         return "manager/upload/textbook-upload";
     }
@@ -845,7 +847,7 @@ public class ManagerController {
         //以下三种种错误
         Integer textBookNum = textbookService.countTextBookByISBN(textbook.getIsbn());
         if (textBookNum != 0) {
-            json.put("msg", "该教材已被提交！");
+            json.put("msg", "该教材/专著已被提交！");
             return json;
         }
         List<MultipartFile> textbookFileList = FileKit.textbookMap.get(key);
@@ -870,7 +872,7 @@ public class ManagerController {
             people = people + (String) entry.getKey() + ",";
         }
         if (!nameMap.containsKey(user.getName())) {
-            json.put("msg", "此教材与本账号用户无关！");
+            json.put("msg", "此教材/专著与本账号用户无关！");
             return json;
         }
         textbook.setPeople(member);
@@ -1859,6 +1861,8 @@ public class ManagerController {
         List<Document> documentList = documentService.findDocumentByItemId(id);
         FileKit.textbookMap = FileKit.clearOrInitMap(FileKit.textbookMap, uid);
         FileKit.deleteFile(new File(UploadUtil.getUploadFilePath() + File.separator + "upload" + File.separator + uid + File.separator + "temp//textbook"));
+        List<Category> categories = Arrays.asList(Category.values());
+        model.addAttribute("categories", categories);
         model.addAttribute("documentList", documentList);
         model.addAttribute("textbook", textbook);
         model.addAttribute("publishTime", DateKit.formatDateByUnixTime(textbook.getPublishTime(), "yyyy-MM"));
@@ -2321,7 +2325,7 @@ public class ManagerController {
         //以下2种错误
         Integer textBookNum = textbookService.countTextBookByISBNExceptId(textbook.getIsbn(), textbook.getId());
         if (textBookNum != 0) {
-            json.put("msg", "该教材已被提交！");
+            json.put("msg", "该教材/专著已被提交！");
             return json;
         }
         UserInfo user = userInfoService.findUserByUid((String) session.getAttribute("uid"));
@@ -2341,7 +2345,7 @@ public class ManagerController {
             people = people + (String) entry.getKey() + ",";
         }
         if (!nameMap.containsKey(user.getName())) {
-            json.put("msg", "此教材与本账号用户无关！");
+            json.put("msg", "此教材/专著与本账号用户无关！");
             return json;
         }
         textbook.setPeople(member);

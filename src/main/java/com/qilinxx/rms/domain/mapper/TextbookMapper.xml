@@ -20,6 +20,8 @@
     <result column="state" jdbcType="CHAR" property="state" />
     <result column="create_id" jdbcType="VARCHAR" property="createId" />
     <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="category" jdbcType="VARCHAR" property="category"
+      typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
@@ -90,6 +92,6 @@
       WARNING - @mbg.generated
     -->
     id, name, people, press, publish_time, ISBN, type, reward, profile, create_time,
-    update_time, remake, state, create_id, mid
+    update_time, remake, state, create_id, mid, category
   </sql>
 </mapper>

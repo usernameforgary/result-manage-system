@@ -121,7 +121,7 @@ public class ExportExcelServiceImpl implements ExportExcelService {
             eos.add((TextbookEo) pojo2Eo(eo,new TextbookEo()));
         }
         ExportExcelUtil<TextbookEo> util = new ExportExcelUtil<>();
-        String[] columnNames = {"教材名称", "主编", "出版社","出版年月","ISBN编号","规划类别","教材获奖","教材简介","创建时间"};
+        String[] columnNames = {"教材/专著名称","类型", "主编", "出版社","出版年月","ISBN编号","规划类别","教材/专著获奖","教材/专著简介","创建时间"};
         try {
             util.exportExcel("用户导出", columnNames, eos,
                     response.getOutputStream(), ExportExcelUtil.EXCEl_FILE_2007);

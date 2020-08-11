@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
@@ -40,7 +40,7 @@
                 <li><a id="a1" href="project-upload" >添加项目</a></li>
                 <li><a id="a2" href="thesis-upload" >添加论文</a></li>
                 <li><a id="a3" href="reward-upload" >添加奖励</a></li>
-                <li><a id="a4" href="textbook-upload" class="selected">添加教材</a></li>
+                <li><a id="a4" href="textbook-upload" class="selected">添加教材/专著</a></li>
                 <li><a id="a5" href="meeting-upload" >添加会议</a></li>
             </ul>
         </div>
@@ -59,13 +59,24 @@
         <div id="tab4" class="tabson" >
             <form  class="form form-horizontal" id="textbook-form" method="post">
                 <div class="row cl">
-                    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【教材名称】：</label>
+                    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【名称】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
                         <input type="text" class="input-text"  id="name" name="name">
                     </div>
                 </div>
                 <div class="row cl">
-                    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【教材主编】：</label>
+                    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【类型】：</label>
+                    <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                        <select class="select" size="1" name="category">
+                            <option th:each="category:${categories}"
+                                    th:value="${category}" th:text="${category}">体育（师范）</option>
+
+                        </select>
+                        </span>
+                    </div>
+                </div>
+                <div class="row cl">
+                    <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【主编】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
                         <input type="text" name="people" id="people" placeholder="若为多名主编，姓名之间用逗号(中英皆可)隔开"  class="input-text">
                     </div>
@@ -91,18 +102,18 @@
                 <div class="row cl">
                     <label class="form-label col-xs-4 col-sm-2">【规划类别】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
-                        <input type="text" placeholder="示例：普通高校教育“十一五”国家规划教材" class="input-text"  id="type" name="type">
+                        <input type="text" placeholder="示例：普通高校教育“十一五”国家规划教材/专著" class="input-text"  id="type" name="type">
                     </div>
                 </div>
                 <div class="row cl">
-                    <label class="form-label col-xs-4 col-sm-2">【教材获奖】：</label>
+                    <label class="form-label col-xs-4 col-sm-2">【教材/专著获奖】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
                         <textarea name="reward" id="reward" class="textarea"  placeholder="说点什么...最多输入200个字符" ></textarea>
                         <p class="textarea-numberbar"><em class="textarea-length"></em></p>
                     </div>
                 </div>
                 <div class="row cl">
-                    <label class="form-label col-xs-4 col-sm-2">【教材简介】：</label>
+                    <label class="form-label col-xs-4 col-sm-2">【教材/专著简介】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
                         <textarea name="profile" id="profile" class="textarea"  placeholder="说点什么...最多输入200个字符" ></textarea>
                         <p class="textarea-numberbar"><em class="textarea-length"></em></p>
@@ -112,7 +123,7 @@
                     <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>【附件上传】：</label>
                     <div class="formControls col-xs-8 col-sm-9">
                         <div class="uploader-list-container" style="padding-left: 0px">
-                            <div>&nbsp;&nbsp;教材封面、版权页、前言、目录等</div>
+                            <div>&nbsp;&nbsp;教材/专著封面、版权页、前言、目录等</div>
                             <div class="queueList">
                                 <div id="dndArea1" class="placeholder">
                                     <div id="filePicker-1"></div>

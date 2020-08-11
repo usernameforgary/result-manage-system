@@ -1,13 +1,16 @@
 package com.qilinxx.rms.domain.model.eo;
 
+import com.qilinxx.rms.domain.model.Category;
+
 /**
  * @Auther: dqsdc
  * @Date: 2019-04-18 16:08
  * @Description:
  */
 public class TextbookEo {
-    //String[] columnNames = {"教材名称", "主编", "出版社","出版年月","ISBN编号","规划类别","教材获奖","教材简介","创建时间"};
+    //String[] columnNames = {"教材/专著名称", "类别", "主编", "出版社","出版年月","ISBN编号","规划类别","教材/专著获奖","教材/专著简介","创建时间"};
     private String name;
+    private Category category;
     private String people;
     private String press;
     private String publishTime;
@@ -23,6 +26,14 @@ public class TextbookEo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getPeople() {

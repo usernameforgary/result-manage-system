@@ -256,13 +256,17 @@
                 <table th:if="${itemType.equals('textbook')}" class="table table-border table-bordered table-bg mt-20">
                     <thead>
                     <tr>
-                        <th colspan="2" scope="col" >教材信息</th>
+                        <th colspan="2" scope="col" >教材/专著信息</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <th width="30%" >教材名称:</th>
+                        <th width="30%" >教材/专著名称:</th>
                         <td><span  th:text="${textbook.name}">http://127.0.0.1/</span></td>
+                    </tr>
+                    <tr >
+                        <td>类型:</td>
+                        <td th:text="${textbook.category}"></td>
                     </tr>
                     <tr >
                         <td>主编:</td>
@@ -281,11 +285,11 @@
                         <td th:text="${textbook.type}">80</td>
                     </tr>
                     <tr>
-                        <td>教材获奖:</td>
+                        <td>教材/专著获奖:</td>
                         <td th:text="${textbook.reward}">80</td>
                     </tr>
                     <tr>
-                        <td>教材简介:</td>
+                        <td>教材/专著简介:</td>
                         <td th:text="${textbook.profile}">80</td>
                     </tr>
                     <tr>

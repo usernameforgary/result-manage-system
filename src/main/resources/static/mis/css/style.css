@@ -162,7 +162,8 @@ h2{font-weight:normal;}
 .box{height:15px;}
 .infolist{padding-left:40px; padding-bottom:15px;}
 .infolist li{ line-height:23px; height:23px; margin-bottom:8px;}
-.infolist li span{float:left; display:block; margin-right:10px;}
+.infolist li span{float:left; display:block; margin-right:10px; width: 160px}
+.infolist li a{width: 80px; text-align:center}
 .info{padding-left:40px; background:url(../images/search.png) no-repeat 10px 15px; padding-top:15px; padding-bottom:20px;}
 .umlist{padding-left:40px;}
 .umlist li{float:left; background:url(../images/ulist.png) no-repeat 0 5px; padding-left:10px; margin-right:15px;}

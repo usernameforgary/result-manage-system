@@ -28,7 +28,7 @@
     <span>位置：</span>
     <ul class="placeul">
         <li><a href="index">首页</a></li>
-        <li><a href="textbook-overview">教材总览</a></li>
+        <li><a href="textbook-overview">教材/专著总览</a></li>
     </ul>
     <ul class="placeul">
         <li style="font-weight: bold">
@@ -45,7 +45,8 @@
             <thead>
             <tr class="text-c">
                 <th width="20">ID</th>
-                <th width="120">教材名称</th>
+                <th width="120">教材/专著名称</th>
+                <th width="40">类型</th>
                 <th width="80">主编</th>
                 <th width="40">出版社</th>
                 <th width="80">出版年月</th>
@@ -58,6 +59,7 @@
             <tr class="text-c" th:if="${textbookList.size()}!=0" th:each="textbook:${textbookList}">
                 <td th:text="${textbookList.indexOf(textbook)+1}"></td>
                 <td><u style="cursor:pointer" class="text-primary" th:data-name="${textbook.name}" th:data-id="${textbook.id}"   onClick="item_detail(this.getAttribute('data-name'),this.getAttribute('data-id'))" title="查看" th:text="${textbook.name}">资讯标题</u></td>
+                <td  th:text="${textbook.category}"></td>
                 <td  th:text="${textbook.people}"></td>
                 <td th:text="${textbook.press}"></td>
                 <td th:text="${dateKit.formatDateByUnixTime(textbook.publishTime,'YYYY-MM')}"></td>

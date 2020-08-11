@@ -52,6 +52,12 @@ public class Textbook {
     private String reward;
 
     /**
+     * 类型
+     */
+    @Column(name = "category")
+    private Category category;
+
+    /**
      * @return id
      */
     public String getId() {
@@ -315,6 +321,14 @@ public class Textbook {
      */
     public void setMid(Integer mid) {
         this.mid = mid;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     @Override

@@ -1214,6 +1214,8 @@ public class AdminController extends BaseController {
         List<Document> documentList = documentService.findDocumentByItemId(id);
         FileKit.textbookMap = FileKit.clearOrInitMap(FileKit.textbookMap, uid);
         FileKit.deleteFile(new File(UploadUtil.getUploadFilePath() + File.separator+"upload"+File.separator+"admin"+File.separator+"temp"+File.separator+"textbook"));
+        List<Category> categories = Arrays.asList(Category.values());
+        model.addAttribute("categories", categories);
         model.addAttribute("documentList", documentList);
         model.addAttribute("textbook", textbook);
         model.addAttribute("publishTime",DateKit.formatDateByUnixTime(textbook.getPublishTime(),"yyyy-MM"));
@@ -1266,7 +1268,7 @@ public class AdminController extends BaseController {
         //以下2种错误
         Integer textBookNum = textbookService.countTextBookByISBNExceptId(textbook.getIsbn(),textbook.getId());
         if (textBookNum != 0) {
-            json.put("msg", "该教材已被提交！");
+            json.put("msg", "该教材/专著已被提交！");
             return json;
         }
 
@@ -1288,7 +1290,7 @@ public class AdminController extends BaseController {
             people = people + (String) entry.getKey() + ",";
         }
         if (!nameMap.containsKey(user.getName())) {
-            json.put("msg", "此教材与本账号用户无关！");
+            json.put("msg", "此教材/专著与本账号用户无关！");
             return json;
         }
         textbook.setPeople(member);
