@@ -53,6 +53,26 @@
             </div>
         </div>
         <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【出生年月】：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" th:value="${birthdayDate}"  onfocus="WdatePicker({ dateFmt:'yyyy-MM' })" name="birthdayDate" id="birthdayDate" class="input-text Wdate" style="width:180px;">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【学历简介】：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea th:text="${user.academicResume}" id="academicResume" name="academicResume" cols="" rows="" class="textarea"  placeholder="格式&#10;学历 学校 专业 毕业时间" dragonfly="true" onKeyUp="$.Huitextarealength(this,200)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length"></em></p>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">【职称简介】：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea th:text="${user.titleResume}" id="titleResume" name="titleResume" cols="" rows="" class="textarea"  placeholder="格式&#10;职称 评职时间" dragonfly="true" onKeyUp="$.Huitextarealength(this,200)"></textarea>
+                <p class="textarea-numberbar"><em class="textarea-length"></em></p>
+            </div>
+        </div>
+        <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>【职称】：</label>
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" class="input-text" autocomplete="off"  id="title" name="title" th:value="${user.title}">
@@ -130,6 +150,7 @@
 <script type="text/javascript" src="H-ui/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
 
 <!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="H-ui/lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="H-ui/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="H-ui/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="H-ui/lib/jquery.validation/1.14.0/messages_zh.js"></script>
@@ -841,7 +862,8 @@
                 $(form).ajaxSubmit({
                     type: 'post',
                     data:{'key':'[[${key}]]'},
-                    url: "/ajax-info-change" ,
+                    url: "/ajax-info-change",
+                    dataType: "json",
                     success: function(data){
                         if(data.msg=="信息提交成功！"){
                             layer.msg(data.msg,{icon:1,time:1500});

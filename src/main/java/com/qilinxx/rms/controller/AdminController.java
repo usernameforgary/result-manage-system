@@ -340,6 +340,8 @@ public class AdminController extends BaseController {
     @RequestMapping("student-list.html")
     public String showMemberList(Model model) {
         List<UserInfoVo> infoList = userInfoService.findAllUser();
+
+        model.addAttribute("dateKit", new DateKit());
         model.addAttribute("userInfoList", infoList);
         model.addAttribute("commons", new Commons());
         return "admin/student-list";
@@ -461,11 +463,13 @@ public class AdminController extends BaseController {
      */
     @RequestMapping("student-edit.html")
     public String student_edit(String uid, Model model) {
-        UserInfo student = userInfoService.findUserByUid(uid);
+        UserInfo user = userInfoService.findUserByUid(uid);
         List<Major> majors = majorService.findAllMajor();
         List<Document> documentList = documentService.findDocumentByItemId(uid);
+
+        model.addAttribute("birthdayDate", user.getBirthday() == null ? null : DateKit.formatDateByUnixTime(user.getBirthday(), "yyyy-MM"));
         model.addAttribute("majorList", majors);
-        model.addAttribute("student", student);
+        model.addAttribute("student", user);
         model.addAttribute("documentList", documentList);
         return "admin/student-edit";
     }

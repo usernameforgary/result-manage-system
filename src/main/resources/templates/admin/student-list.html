@@ -38,9 +38,12 @@
 				<th width="80">工号Id</th>
 				<th width="80">姓名</th>
 				<th width="40">性别</th>
+				<th width="80">出生年月</th>
+				<th width="100">学历简介</th>
+				<th width="100">职称简介</th>
 				<th width="90">职称</th>
 				<th width="150">所属专业</th>
-				<th width="40">简介</th>
+				<th width="100">简介</th>
 				<th width="40">状态</th>
 				<th width="100">操作</th>
 			</tr>
@@ -51,9 +54,12 @@
 				<td th:text="${userInfo.uid}">1</td>
 				<td th:text="${userInfo.name}">张三</td>
 				<td th:text="${userInfo.sex}" >女</td>
+				<td th:text="${userInfo.birthday != null ? dateKit.formatDateByUnixTime(userInfo.birthday,'YYYY-MM') : null}" >2020-8</td>
+				<td style="white-space: pre-line" th:text="${userInfo.academicResume}" >xxx</td>
+				<td style="white-space: pre-line" th:text="${userInfo.titleResume}" >xxx</td>
 				<td th:text="${userInfo.title}">教授</td>
 				<td th:text="${userInfo.major}">admin@mail.com</td>
-				<td th:text="${userInfo.profile}" >大学教授</td>
+				<td style="white-space: pre-line" th:text="${userInfo.profile}" >大学教授</td>
 				<td class="td-status" th:switch="${userInfo.state}">
 					<span th:case="0" class="label label-primary radius">初次使用</span>
 					<span th:case="1" class="label label-danger radius">不可用</span>

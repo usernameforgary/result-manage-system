@@ -59,6 +59,18 @@
 				<td th:text="${user.sex}">192.168.1.1</td>
 			</tr>
 			<tr>
+				<td>出生年月:</td>
+				<td th:text="${birthdayDate}">192.168.1.1</td>
+			</tr>
+			<tr>
+				<td>学历简介:</td>
+				<td style="white-space: pre-line" th:text="${user.academicResume}">Microsoft-IIS/6.0</td>
+			</tr>
+			<tr>
+				<td>职称简介:</td>
+				<td style="white-space: pre-line" th:text="${user.titleResume}">Microsoft-IIS/6.0</td>
+			</tr>
+			<tr>
 				<td>职称:</td>
 				<td th:text="${user.title}"></td>
 			</tr>
@@ -80,7 +92,7 @@
 			</tr>
 			<tr>
 				<td>简介:</td>
-				<td th:text="${user.profile}">Microsoft-IIS/6.0</td>
+				<td style="white-space: pre-line" th:text="${user.profile}">Microsoft-IIS/6.0</td>
 			</tr>
 			<tr>
 				<td>附件</td>

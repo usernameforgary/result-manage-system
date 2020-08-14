@@ -92,6 +92,7 @@
                     <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 				<select id="type" name="type" class="select">
 					<option value="">请选择</option>
+                    <option value="科研论文" th:selected="${thesis.type.equals('科研论文')}">科研论文</option>
 				    <option value="学术论文" th:selected="${thesis.type.equals('学术论文')}">学术论文</option>
 					<option value="教研论文"  th:selected="${thesis.type.equals('教研论文')}">教研论文</option>
 					<option value="其他"  th:selected="${thesis.type.equals('其他')}">其他</option>

@@ -42,6 +42,21 @@ public class UserInfo {
     @Column(name = "remake")
     private String remake;
 
+    @Column(name = "birthday")
+    private Long birthday;
+
+    /**
+     * 学历履历
+     */
+    @Column(name = "academic_resume")
+    private String academicResume;
+
+    /**
+     * 职称履历
+     */
+    @Column(name = "title_resume")
+    private String titleResume;
+
     public String getUid() {
         return uid;
     }
@@ -138,21 +153,68 @@ public class UserInfo {
         this.remake = remake == null ? null : remake.trim();
     }
 
+    public Long getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Long birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAcademicResume() {
+        return academicResume;
+    }
+
+    public void setAcademicResume(String academicResume) {
+        this.academicResume = academicResume;
+    }
+
+    public String getTitleResume() {
+        return titleResume;
+    }
+
+    public void setTitleResume(String titleResume) {
+        this.titleResume = titleResume;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "UserInfo{" +
+//                "uid=" + uid +
+//                ", password='" + password + '\'' +
+//                ", name='" + name + '\'' +
+//                ", sex='" + sex + '\'' +
+//                ", title='" + title + '\'' +
+//                ", belong='" + belong + '\'' +
+//                ", mid=" + mid +
+//                ", profile='" + profile + '\'' +
+//                ", state='" + state + '\'' +
+//                ", createTime=" + createTime +
+//                ", updateTime=" + updateTime +
+//                ", remake='" + remake + '\'' +
+//                ", birthday='" + birthday + '\'' +
+//                '}';
+//    }
     @Override
     public String toString() {
-        return "UserInfo{" +
-                "uid=" + uid +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", sex='" + sex + '\'' +
-                ", title='" + title + '\'' +
-                ", belong='" + belong + '\'' +
-                ", mid=" + mid +
-                ", profile='" + profile + '\'' +
-                ", state='" + state + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", remake='" + remake + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", uid=").append(uid);
+        sb.append(", password=").append(password);
+        sb.append(", name=").append(name);
+        sb.append(", sex=").append(sex);
+        sb.append(", title=").append(title);
+        sb.append(", belong=").append(belong);
+        sb.append(", mid=").append(mid);
+        sb.append(", profile=").append(profile);
+        sb.append(", state=").append(state);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", updateTime=").append(updateTime);
+        sb.append(", remake=").append(remake);
+        sb.append(", birthday=").append(birthday);
+        sb.append("]");
+        return sb.toString();
     }
 }

@@ -137,6 +137,9 @@ public class UserInfoServiceImpl implements UserInfoService {
         userInfoVo.setTitle(info.getTitle());
         userInfoVo.setProfile(info.getProfile());
         userInfoVo.setState(info.getState());
+        userInfoVo.setBirthday(info.getBirthday());
+        userInfoVo.setAcademicResume(info.getAcademicResume());
+        userInfoVo.setTitleResume(info.getTitleResume());
         return userInfoVo;
     }
 }

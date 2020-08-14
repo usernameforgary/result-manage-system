@@ -14,6 +14,9 @@
     <result column="create_time" jdbcType="BIGINT" property="createTime" />
     <result column="update_time" jdbcType="BIGINT" property="updateTime" />
     <result column="remake" jdbcType="VARCHAR" property="remake" />
+    <result column="birthday" jdbcType="BIGINT" property="birthday" />
+    <result column="academic_resume" jdbcType="VARCHAR" property="academicResume" />
+    <result column="title_resume" jdbcType="VARCHAR" property="titleResume" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>

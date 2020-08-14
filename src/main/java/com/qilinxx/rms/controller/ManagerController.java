@@ -6,6 +6,7 @@ import com.qilinxx.rms.util.DateKit;
 import com.qilinxx.rms.util.FileKit;
 import com.qilinxx.rms.util.UploadUtil;
 import net.minidev.json.JSONObject;
+import org.assertj.core.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -138,6 +139,8 @@ public class ManagerController {
         UserInfo user = userInfoService.findUserByUid(uid);
         Major major = majorService.findMajorBymid(user.getMid());
         List<Document> documentList = documentService.findDocumentByItemId(uid);
+
+        model.addAttribute("birthdayDate", user.getBirthday() == null ? null : DateKit.formatDateByUnixTime(user.getBirthday(), "yyyy-MM"));
         model.addAttribute("documentList",documentList);
         model.addAttribute("majorName", major.getName());
         model.addAttribute("user", user);
@@ -158,6 +161,8 @@ public class ManagerController {
         Major major = majorService.findMajorBymid(user.getMid());
         List<Major> majorList = majorService.findAllMajor();
         List<Document> documentList = documentService.findDocumentByItemId(uid);
+
+        model.addAttribute("birthdayDate", user.getBirthday() == null ? null : DateKit.formatDateByUnixTime(user.getBirthday(), "yyyy-MM"));
         model.addAttribute("documentList",documentList);
         model.addAttribute("majorList", majorList);
         model.addAttribute("majorName", major.getName());
@@ -174,19 +179,28 @@ public class ManagerController {
      */
     @PostMapping("ajax-info-change")
     @ResponseBody
-    public JSONObject ajaxInfoChange(String key,UserInfo user, HttpSession session) throws IOException {
+    public JSONObject ajaxInfoChange(String key,String birthdayDate, UserInfo user, HttpSession session) throws IOException {
         JSONObject json = new JSONObject();
+
+        if(!Strings.isNullOrEmpty(birthdayDate)) {
+            birthdayDate += "-01 00:00:00";
+            user.setBirthday(Long.parseLong(String.valueOf(DateKit.getUnixTimeByDate(DateKit.dateFormat(birthdayDate)))));
+        } else {
+            user.setBirthday(null);
+        }
+
         String uid=(String) session.getAttribute("uid");
         List<MultipartFile> selfFileList = FileKit.selfMap.get(key);
         UserInfo dbUser = userInfoService.findUserByUid(uid);
-        boolean same = true;
-        if ((selfFileList!=null&&selfFileList.size()!=0)||!user.getName().equals(dbUser.getName()) || !user.getSex().equals(dbUser.getSex()) || !user.getTitle().equals(dbUser.getTitle()) || !user.getBelong().equals(dbUser.getBelong()) || !user.getMid().equals(dbUser.getMid()) || !user.getProfile().equals(dbUser.getProfile())) {
-            same = false;
-        }
-        if (same) {
-            json.put("msg", "请勿重复提交！");
-            return json;
-        }
+//        boolean same = true;
+//        if ((selfFileList!=null&&selfFileList.size()!=0)||!user.getName().equals(dbUser.getName()) || !user.getSex().equals(dbUser.getSex()) || !user.getTitle().equals(dbUser.getTitle()) || !user.getBelong().equals(dbUser.getBelong()) || !user.getMid().equals(dbUser.getMid()) || !user.getProfile().equals(dbUser.getProfile())
+//                || (user.getBirthday() != null && !user.getBirthday().equals(dbUser.getBirthday()))) {
+//            same = false;
+//        }
+//        if (same) {
+//            json.put("msg", "请勿重复提交！");
+//            return json;
+//        }
         user.setUid(dbUser.getUid());
 //        user.setState("2");//账号变为待审核状态
         user.setUpdateTime(DateKit.getUnixTimeLong());
