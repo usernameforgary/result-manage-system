@@ -4,9 +4,11 @@ spring:
         type: com.alibaba.druid.pool.DruidDataSource
         master:
            name: test
-           url: jdbc:mysql://localhost:3306/achievement?serverTimezone=Asia/Shanghai
+           #url: jdbc:mysql://localhost:3306/achievement?serverTimezone=Asia/Shanghai
+           url: jdbc:mysql://172.17.0.3:3306/achievement_math?serverTimezone=Asia/Shanghai
            username: root
-           password: passworderror2B
+           #password: passworderror2B
+           password: passworderror2X
            driver-class-name: com.mysql.cj.jdbc.Driver
            filters: stat
            maxActive: 100

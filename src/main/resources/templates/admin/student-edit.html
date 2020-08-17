@@ -71,7 +71,7 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>职称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="体育学院" placeholder="" id="belong" name="belong">
+				<input type="text" class="input-text" value="数学科学学院" placeholder="" id="belong" name="belong">
 			</div>
 		</div>
 
@@ -80,7 +80,7 @@
 			<div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
 				<select class="select" size="1" name="mid" th:field="*{student.mid}">
 					<option th:each="major:${majorList}"
-							th:value="${major.mid}" th:text="${major.name}">体育（师范）</option>
+							th:value="${major.mid}" th:text="${major.name}">数学科学（师范）</option>
 				</select>
 				</span>
 			</div>
